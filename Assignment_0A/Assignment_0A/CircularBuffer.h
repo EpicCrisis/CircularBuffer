@@ -1,22 +1,22 @@
 #pragma once
-#define BUFFER_SIZE 7
+#define BUFFER_SIZE 5
 
 class CircularBuffer
 {
 private:
-
-public:
     int head;
     int tail;
     int size;
     float arrayValue[BUFFER_SIZE];
 
+public:
     void pushBack(float _value);
     void pushFront(float _value);
-    void popFront();
-    void popBack();
+    float popFront();
+    float popBack();
     int getSize();
     float getValue(int _location);
-    void getFront();
-    void getBack();
+    float getFront();
+    float getBack();
+    CircularBuffer();
 };
