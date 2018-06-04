@@ -10,7 +10,7 @@ void SetMessage()
 {
     for (int i = 0; i < cb.getSize(); ++i)
     {
-        cout << cb.getValue(i) << "|";
+        cout << cb.getValue(i) << " | ";
     }
     cout << endl << endl;
 
@@ -18,8 +18,8 @@ void SetMessage()
     cout << "[1] Push back a char" << endl;
     cout << "[2] Pop back a char" << endl;
     cout << "[3] Pop front a char" << endl;
-    // [Not finished]
     cout << "[4] Get char from location" << endl;
+    cout << "[5] Get size of buffer" << endl;
 }
 
 void ResetInput()
@@ -93,6 +93,9 @@ int main(void)
             {
                 cout << "You have selected char '" << selected << "' from index " << index << "." << endl;
             }
+            break;
+        case '5':
+            cout << "Current size of circular buffer is " << cb.getSize() << "." << endl;
             break;
         default:
             cout << "Invalid choice, try again." << endl;
