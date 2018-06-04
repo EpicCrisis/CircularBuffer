@@ -3,7 +3,7 @@
 #include <array>
 #include "CircularBuffer.h"
 
-void CircularBuffer::pushBack(float _value)
+void CircularBuffer::pushBack(char _value)
 {
     // Access the value of the head index, then replace it with _value.
     arrayValue[head] = _value;
@@ -15,13 +15,14 @@ void CircularBuffer::pushBack(float _value)
 
     if (overflow > 0)
     {
-        std::cout << "Buffer overload!" << std::endl;
+        std::cout << "Buffer overload, replacing oldest index!" << std::endl;
         size -= overflow;
         tail = (tail + overflow) % BUFFER_SIZE;
     }
 }
 
-void CircularBuffer::pushFront(float _value)
+// [Not finished]
+void CircularBuffer::pushFront(char _value)
 {
     // Access the value of the tail index, then replace it with _value.
     arrayValue[head] = _value;
@@ -33,13 +34,13 @@ void CircularBuffer::pushFront(float _value)
 
     if (overflow > 0)
     {
-        std::cout << "Buffer overload!" << std::endl;
+        std::cout << "Buffer overload, replacing oldest index!" << std::endl;
         size -= overflow;
         tail = (tail + overflow) % BUFFER_SIZE;
     }
 }
 
-float CircularBuffer::popFront()
+char CircularBuffer::popFront()
 {
     // Access the head index, then erase the index.
     if (size <= 0)
@@ -59,7 +60,7 @@ float CircularBuffer::popFront()
     return value;
 }
 
-float CircularBuffer::popBack()
+char CircularBuffer::popBack()
 {
     // Access the tail index, then erase the index.
     if (size <= 0)
@@ -80,20 +81,19 @@ int CircularBuffer::getSize()
     return size;
 }
 
-float CircularBuffer::getValue(int _location)
+char CircularBuffer::getValue(int _location)
 {
     int currentIndex = (tail + _location) % BUFFER_SIZE;
-
     return arrayValue[currentIndex];
 }
 
-float CircularBuffer::getFront()
+char CircularBuffer::getFront()
 {
     // Access the head index and return the value of the index.
     return arrayValue[head];
 }
 
-float CircularBuffer::getBack()
+char CircularBuffer::getBack()
 {
     // Access the tail index and return the value of the index.
     return arrayValue[tail];

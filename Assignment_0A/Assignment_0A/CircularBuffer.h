@@ -10,13 +10,13 @@ private:
     float arrayValue[BUFFER_SIZE];
 
 public:
-    void pushBack(float _value);
-    void pushFront(float _value);
-    float popFront();
-    float popBack();
+    void pushBack(char _value);
+    void pushFront(char _value);
+    char popFront();
+    char popBack();
     int getSize();
-    float getValue(int _location);
-    float getFront();
-    float getBack();
+    char getValue(int _location);
+    char getFront();
+    char getBack();
     CircularBuffer();
 };
