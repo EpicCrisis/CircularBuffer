@@ -7,6 +7,7 @@ private:
     int head;
     int tail;
     int size;
+public:
     float arrayValue[BUFFER_SIZE];
 
 public:
@@ -16,6 +17,7 @@ public:
     char popBack();
     int getSize();
     char getValue(int _location);
+    char getLocation(int _location);
     char getFront();
     char getBack();
     CircularBuffer();

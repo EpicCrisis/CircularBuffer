@@ -20,9 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2717CE5C-D9D6-425F-BE20-6491F0FED64D}</ProjectGuid>
+    <ProjectGuid>{BE4340C5-32B5-4D91-AA9E-1BBA3898585F}</ProjectGuid>
     <RootNamespace>Assignment0A</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>CircularBufferProject</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -10,7 +10,8 @@ void SetMessage()
 {
     for (int i = 0; i < cb.getSize(); ++i)
     {
-        cout << cb.getValue(i) << " | ";
+        //cout << cb.getValue(i) << " | ";
+        cout << (char)cb.arrayValue[i] << " | ";
     }
     cout << endl << endl;
 
@@ -84,7 +85,7 @@ int main(void)
                 cout << "Input only accepts int: ";
             }
 
-            selected = cb.getValue(index);
+            selected = cb.getLocation(index);
             if (index < 0 || index > cb.getSize() - 1)
             {
                 cout << "Index out of range, no value is acquired!" << endl;

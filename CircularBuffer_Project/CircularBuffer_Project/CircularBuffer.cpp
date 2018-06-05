@@ -49,7 +49,7 @@ char CircularBuffer::popFront()
         return NULL;
     }
 
-    float value = getFront();
+    char value = getFront();
 
     head = head - 1;
     if (head <= 0)
@@ -69,7 +69,7 @@ char CircularBuffer::popBack()
         return NULL;
     }
 
-    float value = getBack();
+    char value = getBack();
 
     tail = (tail + 1) % BUFFER_SIZE;
     --size;
@@ -83,7 +83,15 @@ int CircularBuffer::getSize()
 
 char CircularBuffer::getValue(int _location)
 {
+    // Get index relative to the oldest position.
     int currentIndex = (tail + _location) % BUFFER_SIZE;
+    return arrayValue[currentIndex];
+}
+
+char CircularBuffer::getLocation(int _location)
+{
+    // Get index directly from the true position.
+    int currentIndex = _location;
     return arrayValue[currentIndex];
 }
 
