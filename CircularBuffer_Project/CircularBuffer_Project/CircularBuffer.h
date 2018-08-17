@@ -16,7 +16,7 @@ public:
     char popFront();
     char popBack();
     int getSize();
-    char getValue(int _location);
+    char getRelativeLocation(int _location);
     char getLocation(int _location);
     char getFront();
     char getBack();

@@ -10,17 +10,18 @@ void SetMessage()
 {
     for (int i = 0; i < cb.getSize(); ++i)
     {
-        //cout << cb.getValue(i) << " | ";
-        cout << (char)cb.arrayValue[i] << " | ";
+        cout << cb.getRelativeLocation(i) << " | ";
+        //cout << (char)cb.arrayValue[i] << " | ";
     }
     cout << endl << endl;
 
     cout << "Pick your poison: " << endl;
-    cout << "[1] Push back a char" << endl;
+    cout << "[1] Push front a char" << endl;
     cout << "[2] Pop back a char" << endl;
     cout << "[3] Pop front a char" << endl;
     cout << "[4] Get char from location" << endl;
     cout << "[5] Get size of buffer" << endl;
+    cout << "[0] Exit" << endl;
 }
 
 void ResetInput()
@@ -58,7 +59,7 @@ int main(void)
                 ResetInput();
                 cout << "Input only accepts char: ";
             }
-            cb.pushBack(input);
+            cb.pushFront(input);
             break;
         case '2':
             cout << "Attempting to pop back." << endl;
@@ -85,7 +86,7 @@ int main(void)
                 cout << "Input only accepts int: ";
             }
 
-            selected = cb.getLocation(index);
+            selected = cb.getRelativeLocation(index);
             if (index < 0 || index > cb.getSize() - 1)
             {
                 cout << "Index out of range, no value is acquired!" << endl;
@@ -98,6 +99,8 @@ int main(void)
         case '5':
             cout << "Current size of circular buffer is " << cb.getSize() << "." << endl;
             break;
+        case '0':
+            return 0;
         default:
             cout << "Invalid choice, try again." << endl;
             break;

@@ -3,9 +3,8 @@
 #include <array>
 #include "CircularBuffer.h"
 
-void CircularBuffer::pushBack(char _value)
+void CircularBuffer::pushFront(char _value)
 {
-    // Access the value of the head index, then replace it with _value.
     arrayValue[head] = _value;
     head = (head + 1) % BUFFER_SIZE;
     ++size;
@@ -22,11 +21,14 @@ void CircularBuffer::pushBack(char _value)
 }
 
 // [Not finished]
-void CircularBuffer::pushFront(char _value)
+void CircularBuffer::pushBack(char _value)
 {
-    // Access the value of the tail index, then replace it with _value.
-    arrayValue[head] = _value;
-    head = (head + 1) % BUFFER_SIZE;
+    tail = (tail - 1);
+    if (tail <= 0)
+    {
+        tail += BUFFER_SIZE;
+    }
+    arrayValue[tail] = _value;
     ++size;
 
     // Check for overflow.
@@ -36,7 +38,11 @@ void CircularBuffer::pushFront(char _value)
     {
         std::cout << "Buffer overload, replacing oldest index!" << std::endl;
         size -= overflow;
-        tail = (tail + overflow) % BUFFER_SIZE;
+        tail = (head - 1);
+        if (head <= 0)
+        {
+            tail += BUFFER_SIZE;
+        }
     }
 }
 
@@ -52,7 +58,7 @@ char CircularBuffer::popFront()
     char value = getFront();
 
     head = head - 1;
-    if (head <= 0)
+    if (head < 0)
     {
         head += BUFFER_SIZE;
     }
@@ -81,7 +87,7 @@ int CircularBuffer::getSize()
     return size;
 }
 
-char CircularBuffer::getValue(int _location)
+char CircularBuffer::getRelativeLocation(int _location)
 {
     // Get index relative to the oldest position.
     int currentIndex = (tail + _location) % BUFFER_SIZE;
